@@ -63,10 +63,12 @@ packages:
   intl:
     dependency: "direct main"
     description:
-      name: intl
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.16.1"
+      path: "."
+      ref: master
+      resolved-ref: "439b724a81cf53e55a62d32edfce5d4454f886b8"
+      url: "https://github.com/Souvenirrr/custom_intl"
+    source: git
+    version: "0.17.0-nullsafety-dev"
   matcher:
     dependency: transitive
     description:
@@ -157,4 +159,4 @@ packages:
     source: hosted
     version: "2.1.0-nullsafety.3"
 sdks:
-  dart: ">=2.10.0-110 <2.11.0"
+  dart: ">=2.10.0 <2.11.0"

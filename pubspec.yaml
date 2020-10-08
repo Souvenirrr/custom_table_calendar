@@ -11,7 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  intl:	">=0.15.0 <0.17.0"
+  intl:
+    git:
+      url: https://github.com/Souvenirrr/custom_intl
+      ref: master
   simple_gesture_detector: ^0.1.3
 
 dev_dependencies:
