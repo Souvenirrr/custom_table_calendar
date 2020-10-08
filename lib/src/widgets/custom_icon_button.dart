@@ -8,14 +8,16 @@ class _CustomIconButton extends StatelessWidget {
   final VoidCallback onTap;
   final EdgeInsets margin;
   final EdgeInsets padding;
+  final Alignment alignment;
 
-  const _CustomIconButton({
-    Key key,
-    @required this.icon,
-    @required this.onTap,
-    this.margin,
-    this.padding,
-  })  : assert(icon != null),
+  const _CustomIconButton(
+      {Key key,
+      @required this.icon,
+      @required this.onTap,
+      this.margin,
+      this.padding,
+      this.alignment})
+      : assert(icon != null),
         assert(onTap != null),
         super(key: key);
 
@@ -28,7 +30,13 @@ class _CustomIconButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(100.0),
         child: Padding(
           padding: padding,
-          child: icon,
+          child: Container(
+              alignment: alignment,
+              decoration: BoxDecoration(
+                color: Color(0xffdfe7ef),
+                borderRadius: BorderRadius.circular(32)
+              ),
+              child: icon),
         ),
       ),
     );

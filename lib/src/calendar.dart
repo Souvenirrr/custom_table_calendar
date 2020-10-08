@@ -365,13 +365,6 @@ class _TableCalendarState extends State<TableCalendar> with SingleTickerProvider
 
   Widget _buildHeader() {
     final children = [
-      widget.headerStyle.showLeftChevron ?
-        _CustomIconButton(
-          icon: widget.headerStyle.leftChevronIcon,
-          onTap: _selectPrevious,
-          margin: widget.headerStyle.leftChevronMargin,
-          padding: widget.headerStyle.leftChevronPadding,
-        ) : Container(),
       Expanded(
         child: GestureDetector(
           onTap: _onHeaderTapped,
@@ -379,12 +372,20 @@ class _TableCalendarState extends State<TableCalendar> with SingleTickerProvider
           child: Text(
             widget.headerStyle.titleTextBuilder != null
                 ? widget.headerStyle.titleTextBuilder(widget.calendarController.focusedDay, widget.locale)
-                : DateFormat.yMMMM(widget.locale).format(widget.calendarController.focusedDay),
+                : DateFormat.MMMM(widget.locale).format(widget.calendarController.focusedDay),
             style: widget.headerStyle.titleTextStyle,
             textAlign: widget.headerStyle.centerHeaderTitle ? TextAlign.center : TextAlign.start,
           ),
         ),
       ),
+      widget.headerStyle.showLeftChevron ?
+      _CustomIconButton(
+        icon: widget.headerStyle.leftChevronIcon,
+        onTap: _selectPrevious,
+        margin: widget.headerStyle.leftChevronMargin,
+        padding: widget.headerStyle.leftChevronPadding,
+        alignment: Alignment.centerLeft,
+      ) : Container(),
       widget.headerStyle.showRightChevron ?
         _CustomIconButton(
           icon: widget.headerStyle.rightChevronIcon,
@@ -393,11 +394,6 @@ class _TableCalendarState extends State<TableCalendar> with SingleTickerProvider
           padding: widget.headerStyle.rightChevronPadding,
         ) : Container()
     ];
-
-    if (widget.headerStyle.formatButtonVisible && widget.availableCalendarFormats.length > 1) {
-      children.insert(2, const SizedBox(width: 8.0));
-      children.insert(3, _buildFormatButton());
-    }
 
     return Container(
       decoration: widget.headerStyle.decoration,
@@ -596,37 +592,37 @@ class _TableCalendarState extends State<TableCalendar> with SingleTickerProvider
 
     if (key != null) {
       final children = <Widget>[content];
-      final events = eventKey != null ? widget.calendarController.visibleEvents[eventKey] : [];
-      final holidays = holidayKey != null ? widget.calendarController.visibleHolidays[holidayKey] : [];
+      // final events = eventKey != null ? widget.calendarController.visibleEvents[eventKey] : [];
+      // final holidays = holidayKey != null ? widget.calendarController.visibleHolidays[holidayKey] : [];
 
-      if (!_isDayUnavailable(date)) {
-        if (widget.builders.markersBuilder != null) {
-          children.addAll(
-            widget.builders.markersBuilder(
-              context,
-              key,
-              events,
-              holidays,
-            ),
-          );
-        } else {
-          children.add(
-            Positioned(
-              top: widget.calendarStyle.markersPositionTop,
-              bottom: widget.calendarStyle.markersPositionBottom,
-              left: widget.calendarStyle.markersPositionLeft,
-              right: widget.calendarStyle.markersPositionRight,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: events
-                    .take(widget.calendarStyle.markersMaxAmount)
-                    .map((event) => _buildMarker(eventKey, event))
-                    .toList(),
-              ),
-            ),
-          );
-        }
-      }
+      // if (!_isDayUnavailable(date)) {
+      //   if (widget.builders.markersBuilder != null) {
+      //     children.addAll(
+      //       widget.builders.markersBuilder(
+      //         context,
+      //         key,
+      //         events,
+      //         holidays,
+      //       ),
+      //     );
+      //   } else {
+      //     children.add(
+      //       Positioned(
+      //         top: widget.calendarStyle.markersPositionTop,
+      //         bottom: widget.calendarStyle.markersPositionBottom,
+      //         left: widget.calendarStyle.markersPositionLeft,
+      //         right: widget.calendarStyle.markersPositionRight,
+      //         child: Row(
+      //           mainAxisSize: MainAxisSize.min,
+      //           children: events
+      //               .take(widget.calendarStyle.markersMaxAmount)
+      //               .map((event) => _buildMarker(eventKey, event))
+      //               .toList(),
+      //         ),
+      //       ),
+      //     );
+      //   }
+      // }
 
       if (children.length > 1) {
         content = Stack(
@@ -701,19 +697,19 @@ class _TableCalendarState extends State<TableCalendar> with SingleTickerProvider
     }
   }
 
-  Widget _buildMarker(DateTime date, dynamic event) {
-    if (widget.builders.singleMarkerBuilder != null) {
-      return widget.builders.singleMarkerBuilder(context, date, event);
-    } else {
-      return Container(
-        width: 8.0,
-        height: 8.0,
-        margin: const EdgeInsets.symmetric(horizontal: 0.3),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: widget.calendarStyle.markersColor,
-        ),
-      );
-    }
-  }
+  // Widget _buildMarker(DateTime date, dynamic event) {
+  //   if (widget.builders.singleMarkerBuilder != null) {
+  //     return widget.builders.singleMarkerBuilder(context, date, event);
+  //   } else {
+  //     return Container(
+  //       width: 8.0,
+  //       height: 8.0,
+  //       margin: const EdgeInsets.symmetric(horizontal: 0.3),
+  //       decoration: BoxDecoration(
+  //         shape: BoxShape.circle,
+  //         color: widget.calendarStyle.markersColor,
+  //       ),
+  //     );
+  //   }
+  // }
 }

@@ -81,18 +81,28 @@ class HeaderStyle {
     this.titleTextStyle = const TextStyle(fontSize: 17.0),
     this.formatButtonTextStyle = const TextStyle(),
     this.formatButtonDecoration = const BoxDecoration(
-      border: const Border(top: BorderSide(), bottom: BorderSide(), left: BorderSide(), right: BorderSide()),
+      border: const Border(
+          top: BorderSide(),
+          bottom: BorderSide(),
+          left: BorderSide(),
+          right: BorderSide()),
       borderRadius: const BorderRadius.all(Radius.circular(12.0)),
     ),
     this.headerMargin,
     this.headerPadding = const EdgeInsets.symmetric(vertical: 8.0),
-    this.formatButtonPadding = const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+    this.formatButtonPadding =
+        const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
     this.leftChevronPadding = const EdgeInsets.all(12.0),
     this.rightChevronPadding = const EdgeInsets.all(12.0),
     this.leftChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
     this.rightChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
-    this.leftChevronIcon = const Icon(Icons.chevron_left),
-    this.rightChevronIcon = const Icon(Icons.chevron_right),
+    this.leftChevronIcon = const Icon(
+      Icons.chevron_left,
+    ),
+    this.rightChevronIcon = const Icon(
+      Icons.chevron_right,
+      size: 30,
+    ),
     this.showLeftChevron = true,
     this.showRightChevron = true,
     this.decoration = const BoxDecoration(),
