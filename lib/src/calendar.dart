@@ -538,7 +538,7 @@ class _TableCalendarState extends State<TableCalendar> with SingleTickerProvider
       children: widget.calendarController._visibleDays.value.take(7).map((date) {
         final weekdayString = widget.daysOfWeekStyle.dowTextBuilder != null
             ? widget.daysOfWeekStyle.dowTextBuilder(date, widget.locale)
-            : DateFormat.E(widget.locale).format(date);
+            : DateFormat.EEEE(widget.locale).format(date);
         final isWeekend = widget.calendarController._isWeekend(date, widget.weekendDays);
 
         if (isWeekend && widget.builders.dowWeekendBuilder != null) {
